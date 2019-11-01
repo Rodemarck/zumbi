@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/ZombieAnimationPackFree/Scenes/DemoScene.unity
+  isLoaded: 1
+  isActive: 1
