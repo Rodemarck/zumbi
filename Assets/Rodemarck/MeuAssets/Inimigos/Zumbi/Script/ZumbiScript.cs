@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UniJSON;
 using UnityEngine;
@@ -43,13 +44,18 @@ public class ZumbiScript : MonoBehaviour
     {
         Debug.Log("esupro mental");
     }
-    void Start()
+
+    private void Awake()
     {
         vida = new Vida();
         vida.Canvas = barraVida;
         vida.Camera = GameObject.FindWithTag("Camera");
         vida.VidaMax = 100f;
         vida.VidaAtual = 100f;
+    }
+
+    void Start()
+    {
         Speed = 10.0f;
         Angularspeed = 0.0f;
         

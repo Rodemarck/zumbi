@@ -79,11 +79,13 @@
     <Compile Include="Assets\Rodemarck\MeuAssets\Lobinho\WolfCharacter.cs" />
     <Compile Include="Assets\Rodemarck\MeuAssets\Lobinho\WolfControl.cs" />
     <Compile Include="Assets\Rodemarck\Scenes\Niveis\Level1\Player_level1.cs" />
+    <Compile Include="Assets\Rodemarck\Scenes\Niveis\Script\ContadorScript.cs" />
     <Compile Include="Assets\Rodemarck\Scenes\Niveis\Script\GuiaScript.cs" />
     <Compile Include="Assets\Rodemarck\Scenes\Niveis\Script\IntanciadorInimigosScript.cs" />
     <Compile Include="Assets\Rodemarck\Scenes\Niveis\Script\ObstaculoScript.cs" />
     <Compile Include="Assets\Rodemarck\Scenes\Niveis\Script\PlataformaScript.cs" />
     <Compile Include="Assets\Rodemarck\Scenes\Niveis\Script\PortaScript.cs" />
+    <Compile Include="Assets\Rodemarck\Scenes\Niveis\Script\ZumbiMortosScript.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\MenuSceneLoader.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\PauseMenu.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\SceneAndURLLoader.cs" />

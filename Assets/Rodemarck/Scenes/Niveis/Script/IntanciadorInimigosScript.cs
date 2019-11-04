@@ -6,6 +6,7 @@ public class IntanciadorInimigosScript : MonoBehaviour
 {
     public GameObject posicao;
     public GameObject inimigo;
+    public GameObject contador;
     public int numero;
     
     // Start is called before the first frame update
@@ -25,6 +26,8 @@ public class IntanciadorInimigosScript : MonoBehaviour
         for (int i = 0; i < numero; i++)
         {
             GameObject temp = Instantiate(inimigo) as GameObject;
+            temp.AddComponent<ZumbiMortosScript>();
+            temp.GetComponent<ZumbiMortosScript>().alvo = contador;
             temp.transform.position = posicao.transform.position;
         }
     }

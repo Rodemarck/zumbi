@@ -30,7 +30,6 @@ public class PlataformaScript : MonoBehaviour
         if (ativo)
         {
             alvo.SendMessage("acao");
-            ativo = false;
             if (prox != null)
             {
                 prox.SendMessage("acao");
