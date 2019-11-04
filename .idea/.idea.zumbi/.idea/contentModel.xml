@@ -9,6 +9,14 @@
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="DistanceTool" t="Include">
+          <e p="DistanceTool.cs" t="Include" />
+          <e p="Editor" t="Include">
+            <e p="DistanceToolEditor.cs" t="Include" />
+            <e p="DistanceToolMenu.cs" t="Include" />
+          </e>
+          <e p="READ ME.txt" t="Include" />
+        </e>
         <e p="Plugins" t="Include">
           <e p="crosstales" t="Include">
             <e p="Common" t="Include">
@@ -254,9 +262,15 @@
         </e>
         <e p="Rodemarck" t="Include">
           <e p="MeuAssets" t="Include">
+            <e p="GUI" t="Include">
+              <e p="Script" t="Include">
+                <e p="MenuScript.cs" t="Include" />
+              </e>
+            </e>
             <e p="Inimigos" t="Include">
               <e p="zumbi" t="Include">
                 <e p="Script" t="Include">
+                  <e p="MaosZumbi.cs" t="Include" />
                   <e p="ParteZumbiScript.cs" t="Include" />
                   <e p="ZumbiScript.cs" t="Include" />
                 </e>
@@ -274,6 +288,20 @@
               <e p="AICharacterControl.cs" t="Include" />
               <e p="WolfCharacter.cs" t="Include" />
               <e p="WolfControl.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Scenes" t="Include">
+            <e p="Niveis" t="Include">
+              <e p="Level1" t="Include">
+                <e p="Player_level1.cs" t="Include" />
+              </e>
+              <e p="Script" t="Include">
+                <e p="GuiaScript.cs" t="Include" />
+                <e p="IntanciadorInimigosScript.cs" t="Include" />
+                <e p="ObstaculoScript.cs" t="Include" />
+                <e p="PlataformaScript.cs" t="Include" />
+                <e p="PortaScript.cs" t="Include" />
+              </e>
             </e>
           </e>
         </e>

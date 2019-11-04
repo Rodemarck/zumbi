@@ -11,6 +11,7 @@ public class ZumbiScript : MonoBehaviour
     public Vida vida;
     public float Speed;
     public float Angularspeed;
+    public float Dano;
     public bool Attack = false;
     public bool Death = false;
     public GameObject barraVida;
@@ -20,9 +21,13 @@ public class ZumbiScript : MonoBehaviour
     private NavMeshAgent NavMeshAgent;
     private GameObject Player;
 
+    public float GetDano()
+    {
+        return Dano;
+    }
    
 
-    public void dano(float value)
+    public void RecebeDano(float value)
     {
         if (!Death)
         {

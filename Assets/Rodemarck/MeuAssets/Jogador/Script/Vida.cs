@@ -66,14 +66,5 @@ public class Vida : MonoBehaviour
     {
         canvas.transform.localScale = new Vector3((vidaAtual/vidaMax),1,1);
     }
-
-    private void LateUpdate()
-    {
-        if (_camera != null)
-        {
-            transform.LookAt(_camera.transform.forward);
-            transform.Rotate(0, 180, 0);
-        }
-        else Debug.Log("null");
-    }
+    
 }

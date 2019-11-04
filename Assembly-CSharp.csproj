@@ -60,12 +60,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\DistanceTool\DistanceTool.cs" />
     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\Scripts\CameraControls.cs" />
     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\Scripts\IcoBumpin.cs" />
     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Misc\HueCube.cs" />
     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Procedural Mesh\ExtrudeRandomEdges.cs" />
     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Runtime Editing\RuntimeEdit.cs" />
     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Vertex Colors\HighlightNearestFace.cs" />
+    <Compile Include="Assets\Rodemarck\MeuAssets\GUI\Script\MenuScript.cs" />
+    <Compile Include="Assets\Rodemarck\MeuAssets\Inimigos\Zumbi\Script\MaosZumbi.cs" />
     <Compile Include="Assets\Rodemarck\MeuAssets\Inimigos\Zumbi\Script\ParteZumbiScript.cs" />
     <Compile Include="Assets\Rodemarck\MeuAssets\Inimigos\Zumbi\Script\ZumbiScript.cs" />
     <Compile Include="Assets\Rodemarck\MeuAssets\Jogador\Script\ArmaScript.cs" />
@@ -75,6 +78,12 @@
     <Compile Include="Assets\Rodemarck\MeuAssets\Lobinho\AICharacterControl.cs" />
     <Compile Include="Assets\Rodemarck\MeuAssets\Lobinho\WolfCharacter.cs" />
     <Compile Include="Assets\Rodemarck\MeuAssets\Lobinho\WolfControl.cs" />
+    <Compile Include="Assets\Rodemarck\Scenes\Niveis\Level1\Player_level1.cs" />
+    <Compile Include="Assets\Rodemarck\Scenes\Niveis\Script\GuiaScript.cs" />
+    <Compile Include="Assets\Rodemarck\Scenes\Niveis\Script\IntanciadorInimigosScript.cs" />
+    <Compile Include="Assets\Rodemarck\Scenes\Niveis\Script\ObstaculoScript.cs" />
+    <Compile Include="Assets\Rodemarck\Scenes\Niveis\Script\PlataformaScript.cs" />
+    <Compile Include="Assets\Rodemarck\Scenes\Niveis\Script\PortaScript.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\MenuSceneLoader.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\PauseMenu.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\SceneAndURLLoader.cs" />
@@ -222,6 +231,7 @@
     <None Include="Assets\ProCore\ProBuilder\Shader\pb_UnlitVertexColor.shader" />
     <None Include="Assets\ProCore\ProBuilder\Shader\pb_FacePicker.shader" />
     <None Include="Assets\ProCore\ProBuilder\About\Font\SIL Open Font License.txt" />
+    <None Include="Assets\DistanceTool\READ ME.txt" />
     <None Include="Assets\ProCore\ProBuilder\About\pc_AboutEntry_ProBuilder.txt" />
     <None Include="Assets\ProCore\ProBuilder\Shader\pb_VertexShader.shader" />
     <None Include="Assets\ProCore\ProBuilder\Shader\pb_NormalPreview.shader" />

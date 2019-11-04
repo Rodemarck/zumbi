@@ -23,6 +23,7 @@ public class ParteZumbiScript : MonoBehaviour
     public void tiro(float value)
     {
         Debug.Log("hit" + value);
-        Zumbi.SendMessage("dano",(-value * Multiplicador));
+        Zumbi.SendMessage("RecebeDano",(-value * Multiplicador));
     }
+    
 }

@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Rodemarck/Scenes/Fabrica.unity
+- path: Assets/Rodemarck/Scenes/Niveis/Level1/Fase1.unity
   isLoaded: 1
   isActive: 1

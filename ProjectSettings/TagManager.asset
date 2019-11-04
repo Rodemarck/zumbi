@@ -12,6 +12,8 @@ TagManager:
   - PeitoZumbi
   - Bala
   - Camera
+  - Botao
+  - Plataforma
   layers:
   - Default
   - TransparentFX

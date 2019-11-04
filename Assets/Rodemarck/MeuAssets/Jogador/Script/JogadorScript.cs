@@ -39,13 +39,22 @@ public class JogadorScript : MonoBehaviour
         
     }
 
+    private void list(Transform transform)
+    {
+        Debug.Log(transform.gameObject.name);
+        foreach (Transform t in transform)
+        {
+            list(t);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
         mouseX += Input.GetAxis("Mouse X") * dpi; 
         mouseY += Input.GetAxis("Mouse Y") * -dpi;
-        if((mouseX >= 30 && mouseX <= 150) && (mouseY >= 30 && mouseY <= 150))
-            gameObject.transform.eulerAngles = new Vector3(mouseY,mouseX,0);
+        //if((mouseX >= 30 && mouseX <= 150) && (mouseY >= 30 && mouseY <= 150))
+        gameObject.transform.eulerAngles = new Vector3(mouseY,mouseX,0);
         Direcao.x  = CrossPlatformInputManager.GetAxis("Horizontal");
         Direcao.z = CrossPlatformInputManager.GetAxis("Vertical");
         Vector3 movimento = new Vector3(Direcao.x,0,Direcao.z);
@@ -79,19 +88,20 @@ public class JogadorScript : MonoBehaviour
         }
         
     }
-    void OnCollisionEnter(Collision collision)
+
+    public void RecebeDano(float value)
     {
-        Debug.Log(collision.gameObject.tag);
-        if (!Morto && collision.gameObject.tag == "MaoZumbi")
+        if (vida.vivo())
         {
-            Animador.SetBool("damage",true);
-            vida.VidaAtual -= 10;
-            if (!vida.vivo())
-            {
-                Morto = true;
-                Animador.SetBool("morto", true);
-                return;
-            }
+            vida.VidaAtual += value;
+            Debug.Log(vida.VidaAtual);
         }
     }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        Debug.Log(other.gameObject.name);
+    }
+    
+    
 }
