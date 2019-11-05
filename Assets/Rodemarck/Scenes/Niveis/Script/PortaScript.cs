@@ -8,7 +8,6 @@ public class PortaScript : MonoBehaviour
     public bool vertical;
     public float deslocamento;
     public GameObject prox;
-    
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +32,7 @@ public class PortaScript : MonoBehaviour
                 v.y += deslocamento;
             else
                 v.x += deslocamento;
+            Debug.Log("fechando "+gameObject.name);
         }
         else
         {
@@ -40,6 +40,13 @@ public class PortaScript : MonoBehaviour
                 v.y -= deslocamento;
             else
                 v.x -= deslocamento;
+            Debug.Log("abrindo "+gameObject.name);
+        }
+
+        if (prox != null)
+        {
+            Debug.Log("o prox e "+prox.name);
+            prox.SendMessage("acao");
         }
         aberto = !aberto;
         transform.position = v;

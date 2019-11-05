@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,7 @@ public class InventarioUI : MonoBehaviour
     public Transform bolsa;
     private InventorySlot[] slots;
     public GameObject inventoryUI;
+    public GameObject outroCanvas;
     void Start()
     {
         inventario = Inventory.instance;
@@ -21,8 +23,11 @@ public class InventarioUI : MonoBehaviour
     {
         if (Input.GetKeyDown("i"))
         {
+            //if(outroCanvas != null)
+            outroCanvas.SetActive(inventoryUI.activeSelf);
             inventoryUI.SetActive(!inventoryUI.activeSelf);
             Cursor.visible = inventoryUI.activeSelf;
+            
         }
     }
 

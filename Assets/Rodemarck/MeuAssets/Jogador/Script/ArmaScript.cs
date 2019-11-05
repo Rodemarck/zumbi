@@ -28,7 +28,7 @@ public class ArmaScript : MonoBehaviour
         {
             if (!IsInvoking("InstanciaBala"))
             {
-                InvokeRepeating("InstanciaBala",0f,0.06f);
+                InvokeRepeating("InstanciaBala",0f,0.1f);
             }
         }
         else if (Input.GetMouseButtonUp(0))
@@ -41,7 +41,7 @@ public class ArmaScript : MonoBehaviour
 
     void InstanciaBala()
     {
-        if (bala != null)
+        if (bala != null && !Cursor.visible)
         {
             GameObject temp = Instantiate(bala) as GameObject;
             num += 5;

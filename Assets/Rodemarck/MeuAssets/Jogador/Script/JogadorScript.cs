@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UniJSON;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
+using UnityEngine.EventSystems;
 
 [System.Serializable]
 public class JogadorScript : MonoBehaviour
@@ -11,7 +12,6 @@ public class JogadorScript : MonoBehaviour
     private Vida vida;
     private bool Morto = false;
     private Animator Animador;
-    private Vector3 Direcao = new Vector3();
     private CharacterController Controller;
     [SerializeField][Range(0,20)]public float velocidade = 10;
     [SerializeField][Range(0,30)]public float dpi = 20;
@@ -35,7 +35,6 @@ public class JogadorScript : MonoBehaviour
         vida.VidaAtual = 100f;
         Animador = GetComponent<Animator>();
         Controller = GetComponent<CharacterController>();
-        Direcao = this.gameObject.transform.position;
         
     }
 
@@ -51,20 +50,50 @@ public class JogadorScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+        
+        Vector3 frente;
         mouseX += Input.GetAxis("Mouse X") * dpi; 
         mouseY += Input.GetAxis("Mouse Y") * -dpi;
-        //if((mouseX >= 30 && mouseX <= 150) && (mouseY >= 30 && mouseY <= 150))
+
         gameObject.transform.eulerAngles = new Vector3(mouseY,mouseX,0);
+
+        float v = CrossPlatformInputManager.GetAxis("Vertical");
+        float h = CrossPlatformInputManager.GetAxis("Horizontal");
+        Vector3 movimento = new Vector3(v,0,h);
+        if (vida.Camera != null)
+        {
+            frente = Vector3.Scale(vida.Camera.transform.forward, new Vector3(1, 0, 1)).normalized;
+            movimento = v*frente + h*vida.Camera.transform.right;
+        }
+
+        movimento *= velocidade;
+        /*
+        
+        
+        
+        
+        
+        // Calculate the move direction relative to the character's yaw rotation
+        Quaternion yawRotation = Quaternion.Euler(0.0f, gameObject.transform.eulerAngles.y, 0.0f);
+        Vector3 forward = yawRotation * Vector3.forward;
+        Vector3 right = yawRotation * Vector3.right;
+        Vector3 movementInput = (forward * _playerInput.MoveInput.y + right * _playerInput.MoveInput.x);
+        
+        
         Direcao.x  = CrossPlatformInputManager.GetAxis("Horizontal");
         Direcao.z = CrossPlatformInputManager.GetAxis("Vertical");
         Vector3 movimento = new Vector3(Direcao.x,0,Direcao.z);
         movimento*= velocidade;
-        Vector3 v = this.gameObject.transform.eulerAngles;
+
+        /*Vector3 v = gameObject.transform.eulerAngles;
         movimento = Quaternion.Euler(v.x,0,v.z) * movimento ;
+        */
         Controller.SimpleMove(movimento);
-        andar = Direcao.z > 0;
+        /*andar = Direcao.z > 0;
         esq = Direcao.x < 0;
-        dir = Direcao.x > 0;
+        dir = Direcao.x > 0;*/
         if (Input.GetMouseButtonDown(0))
             atirar = true;
         else if (Input.GetMouseButtonUp(0))
@@ -75,9 +104,13 @@ public class JogadorScript : MonoBehaviour
 
     private void Anima()
     {
-        if (atirar)
+        /*if (atirar)
         {
-            Animador.SetBool("tiro", atirar);
+            Animador.SetBool("anda", false);
+            Animador.SetBool("esq", false);
+            Animador.SetBool("dir", false);
+            Animador.SetBool("tiro", true);
+            
         }
         else
         {
@@ -85,7 +118,7 @@ public class JogadorScript : MonoBehaviour
             Animador.SetBool("esq", esq);
             Animador.SetBool("dir", dir);
             Animador.SetBool("tiro", false);   
-        }
+        }*/
         
     }
 
@@ -98,10 +131,5 @@ public class JogadorScript : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision other)
-    {
-        Debug.Log(other.gameObject.name);
-    }
-    
-    
+
 }

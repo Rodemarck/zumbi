@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Player_level1 : MonoBehaviour
@@ -22,6 +24,8 @@ public class Player_level1 : MonoBehaviour
         textos[5] = "atire no botão cinza";
         textos[6] = "sai da sala";
         textos[7] = "mata a porra do zumbi";
+        textos[8] = "avance";
+        textos[9] = "mate todos, ou morra tentando";
         acao();
         
     }
@@ -78,7 +82,11 @@ public class Player_level1 : MonoBehaviour
 
     public void acao()
     {
-        texto.GetComponent<Text>().text = textos[n++];
+        if (n == 10) 
+            SceneManager.LoadScene("Fase2");
+        else
+            texto.GetComponent<Text>().text = textos[n++];
+        
     }
 
 }

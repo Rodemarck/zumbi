@@ -260,10 +260,16 @@
             </e>
           </e>
         </e>
+        <e p="README.txt" t="Include" />
         <e p="Rodemarck" t="Include">
           <e p="MeuAssets" t="Include">
             <e p="GUI" t="Include">
               <e p="Script" t="Include">
+                <e p="InventarioUI.cs" t="Include" />
+                <e p="Inventory.cs" t="Include" />
+                <e p="InventorySlot.cs" t="Include" />
+                <e p="Item.cs" t="Include" />
+                <e p="ItemPickUp.cs" t="Include" />
                 <e p="MenuScript.cs" t="Include" />
               </e>
             </e>
@@ -296,15 +302,22 @@
                 <e p="Player_level1.cs" t="Include" />
               </e>
               <e p="Script" t="Include">
+                <e p="AlavancaScript.cs" t="Include" />
                 <e p="ContadorScript.cs" t="Include" />
                 <e p="GuiaScript.cs" t="Include" />
                 <e p="IntanciadorInimigosScript.cs" t="Include" />
+                <e p="MudaCenaScript.cs" t="Include" />
                 <e p="ObstaculoScript.cs" t="Include" />
                 <e p="PlataformaScript.cs" t="Include" />
                 <e p="PortaScript.cs" t="Include" />
                 <e p="ZumbiMortosScript.cs" t="Include" />
               </e>
             </e>
+          </e>
+        </e>
+        <e p="rpg-tutorial-assets" t="Include">
+          <e p="rpg-tutorial-assets" t="Include">
+            <e p="README.txt" t="Include" />
           </e>
         </e>
         <e p="SampleScenes" t="Include">

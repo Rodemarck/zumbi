@@ -8,6 +8,8 @@ public class PlataformaScript : MonoBehaviour
     public GameObject alvo;
     public GameObject prox;
     public bool ativo;
+    
+    public string itemNome;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,13 +29,18 @@ public class PlataformaScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
+        
         if (ativo)
         {
-            alvo.SendMessage("acao");
-            if (prox != null)
+            if (itemNome == null || Inventory.instance.Existe(itemNome))
             {
-                prox.SendMessage("acao");
+                alvo.SendMessage("acao");
+                if (prox != null)
+                {
+                    prox.SendMessage("acao");
+                }
             }
+            
         }
     }
     

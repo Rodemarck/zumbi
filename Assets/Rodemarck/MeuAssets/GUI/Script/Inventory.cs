@@ -10,13 +10,13 @@ public class Inventory : MonoBehaviour {
 
     void Awake ()
     {
+        Debug.Log("pau no cu de geral!!!");
         if (instance != null)
         {
             Debug.LogWarning("More than one instance of Inventory found!");
             return;
-        }
-
-        instance = this;
+        }    
+        instance = new Inventory();
     }
 
     #endregion
@@ -64,5 +64,21 @@ public class Inventory : MonoBehaviour {
         if (onItemChangedCallback != null)
             onItemChangedCallback.Invoke();
     }
+
+    public bool Existe(string name)
+    {
+        foreach (Item item in items)
+            if (item.name == name)
+                return true;
+        return false;
+    }
+    
+    public Item Get(string name)
+        {
+            foreach (Item item in items)
+                if (item.name == name)
+                    return item;
+            return null;
+        }
 
 }

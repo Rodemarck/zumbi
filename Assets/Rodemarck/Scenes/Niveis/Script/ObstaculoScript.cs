@@ -19,10 +19,12 @@ public class ObstaculoScript : MonoBehaviour
 
     public void acao()
     {
+        Debug.Log("removendo "+gameObject.name);
         if (prox != null)
         {
+            Debug.Log("o prox e "+prox.name);
             prox.SendMessage("acao");
-        }    
+        }
         Destroy(gameObject);
     }
 }
