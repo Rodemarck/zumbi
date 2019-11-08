@@ -5,7 +5,9 @@ using UnityEngine;
 public class ItemPickUp : MonoBehaviour
 {
     private GameObject player;
-
+    public GameObject canvas;
+    public GameObject alvo;
+    public GameObject prox;
     public Item item;
     // Start is called before the first frame update
     void Start()
@@ -18,9 +20,19 @@ public class ItemPickUp : MonoBehaviour
     {
         if (Input.GetKeyDown("e"))
         {
-            //if(Vector3.Distance(transform.position,player.transform.position) < 2)
-                Debug.Log("pegando a "+item.name);
+            if (Vector3.Distance(transform.position, player.transform.position) < 2)
+            {
+                Debug.Log("pegando a " + item.name);
                 PickUp();
+                if (alvo != null)
+                {
+                    alvo.SendMessage("acao");
+                    if (prox != null)
+                    {
+                        prox.SendMessage("acao");
+                    }
+                }
+            }
         }
     }
 

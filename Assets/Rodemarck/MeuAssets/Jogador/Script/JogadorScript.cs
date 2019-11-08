@@ -13,18 +13,27 @@ public class JogadorScript : MonoBehaviour
     private bool Morto = false;
     private Animator Animador;
     private CharacterController Controller;
+    public GameObject mira;
     [SerializeField][Range(0,20)]public float velocidade = 10;
     [SerializeField][Range(0,30)]public float dpi = 20;
     private bool andar;
     private bool esq;
     private bool dir;
     private bool atirar;
-    private bool pular;
+    private bool Armado;
     private float mouseX, mouseY;
+    private bool travar = true;
+    private float h;
+    private float v;
+    public bool Travar
+    {
+        get => travar;
+        set => travar = value;
+    }
     
-    [SerializeField] private GameObject barraVida;
-
-
+    
+    [SerializeField]    private GameObject barraVida;
+    
 
     void Start()
     {
@@ -50,17 +59,23 @@ public class JogadorScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (EventSystem.current.IsPointerOverGameObject())
-            return;
-        
         Vector3 frente;
-        mouseX += Input.GetAxis("Mouse X") * dpi; 
-        mouseY += Input.GetAxis("Mouse Y") * -dpi;
+        if (travar)
+        {
+            mouseX += Input.GetAxis("Mouse X") * dpi; 
+            mouseY += Input.GetAxis("Mouse Y") * -dpi;
+            
+            gameObject.transform.eulerAngles = new Vector3(mouseY,mouseX,0);
+            v = CrossPlatformInputManager.GetAxis("Vertical");
+            h = CrossPlatformInputManager.GetAxis("Horizontal");
+        }
+        else
+        {
+            v = 0;
+            h = 0;
+        }
+        
 
-        gameObject.transform.eulerAngles = new Vector3(mouseY,mouseX,0);
-
-        float v = CrossPlatformInputManager.GetAxis("Vertical");
-        float h = CrossPlatformInputManager.GetAxis("Horizontal");
         Vector3 movimento = new Vector3(v,0,h);
         if (vida.Camera != null)
         {
@@ -69,57 +84,31 @@ public class JogadorScript : MonoBehaviour
         }
 
         movimento *= velocidade;
-        /*
-        
-        
-        
-        
-        
-        // Calculate the move direction relative to the character's yaw rotation
-        Quaternion yawRotation = Quaternion.Euler(0.0f, gameObject.transform.eulerAngles.y, 0.0f);
-        Vector3 forward = yawRotation * Vector3.forward;
-        Vector3 right = yawRotation * Vector3.right;
-        Vector3 movementInput = (forward * _playerInput.MoveInput.y + right * _playerInput.MoveInput.x);
-        
-        
-        Direcao.x  = CrossPlatformInputManager.GetAxis("Horizontal");
-        Direcao.z = CrossPlatformInputManager.GetAxis("Vertical");
-        Vector3 movimento = new Vector3(Direcao.x,0,Direcao.z);
-        movimento*= velocidade;
-
-        /*Vector3 v = gameObject.transform.eulerAngles;
-        movimento = Quaternion.Euler(v.x,0,v.z) * movimento ;
-        */
+       
         Controller.SimpleMove(movimento);
-        /*andar = Direcao.z > 0;
-        esq = Direcao.x < 0;
-        dir = Direcao.x > 0;*/
+        
         if (Input.GetMouseButtonDown(0))
             atirar = true;
         else if (Input.GetMouseButtonUp(0))
             atirar = false;
-        pular = Input.GetKeyDown("space");
         Anima();
     }
 
+    public void armado()
+    {
+        Animador.SetBool("armado",true);
+    }
+    
+    public void desarmado()
+    {
+        Animador.SetBool("armado",false);
+    }
     private void Anima()
     {
-        /*if (atirar)
+        if (!Armado)
         {
-            Animador.SetBool("anda", false);
-            Animador.SetBool("esq", false);
-            Animador.SetBool("dir", false);
-            Animador.SetBool("tiro", true);
-            
+            Animador.SetBool("socar",atirar);
         }
-        else
-        {
-            Animador.SetBool("anda", andar);
-            Animador.SetBool("esq", esq);
-            Animador.SetBool("dir", dir);
-            Animador.SetBool("tiro", false);   
-        }*/
-        
     }
 
     public void RecebeDano(float value)
@@ -131,5 +120,13 @@ public class JogadorScript : MonoBehaviour
         }
     }
 
+    public void fap()
+    {
+        Debug.Log("ta na hora de fap");
+    }
 
+    private void OnAnimatorMove()
+    {
+        
+    }
 }

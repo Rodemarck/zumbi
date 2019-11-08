@@ -1,4 +1,5 @@
-﻿using UniGLTF;
+﻿using System;
+using UniGLTF;
 using UniHumanoid;
 using UnityEngine;
 
@@ -9,46 +10,70 @@ public class Item : ScriptableObject {
 
     new public string name = "New Item";	// Name of the item
     public Sprite icon = null;				// Item icon
-    public bool isDefaultItem = false;      // Is the item default wear?
-    private bool procura;
     public GameObject itemGameObject;
-    
+    public GameObject itemPickup;
+    public bool arma;
+    private JogadorScript script;    
 
+
+    public JogadorScript Script
+    {
+        get {
+            if (script == null)
+            {
+                script = GameObject.FindWithTag("Jogador").GetComponent<JogadorScript>();
+            }
+
+            return script;
+        }
+    }
+
+    private void posiciona(GameObject gameObject)
+    {
+        gameObject.transform.parent = GameObject.Find("Arma").transform;
+        gameObject.transform.localPosition= Vector3.zero;
+        gameObject.transform.localScale = Vector3.one;
+        gameObject.transform.localEulerAngles = Vector3.zero;
+    }
     // Called when the item is pressed in the inventory
     public virtual void Use ()
     {
-        /*procura = true;
-        find(GameObject.FindWithTag("Jogador").transform);*/
-
+        if (arma)
+        {
+            if (GameObject.FindWithTag("Arma") == null)
+            {
+                Debug.Log("criando");
+                GameObject temp = Instantiate(itemGameObject);
+                posiciona(temp);
+                temp.GetComponent<ArmaScript>().canvas = Script.mira;
+                Script.armado();
+            }
+            else
+            {
+                remove();
+            }
+        }
     }
 
-    public void find(Transform trans)
+    public void remove()
     {
-        Debug.Log(trans.gameObject.name);
-        if (trans.gameObject.name == "Arma")
-        {
-            procura = false;
-            foreach (Transform t in trans)
-            {
-                Destroy(t.gameObject);
-            }
-
-            GameObject temp = Instantiate(itemGameObject) as GameObject;
-            temp.GetComponent<ArmaScript>().canvas = GameObject.Find("BarraDeVida");
-            temp.transform.parent = trans;
-        }
-            
-        foreach (Transform t in trans)
-        {
-            if (!procura)
-                return;
-            find(t);
-        }
+        Debug.Log("removendo "+GameObject.FindWithTag("Arma").name);
+        Destroy(GameObject.FindWithTag("Arma"));
+        Script.desarmado();
     }
 
     public void RemoveFromInventory ()
     {
-        Inventory.instance.Remove(this);
+        if (arma)
+        {
+            if(GameObject.FindWithTag("Arma") != null)
+                remove();
+            Inventory.instance.Remove(this);
+            GameObject temp = Instantiate(itemPickup);
+            posiciona(temp);
+            temp.transform.parent = null;
+            
+        }
     }
 	
 }

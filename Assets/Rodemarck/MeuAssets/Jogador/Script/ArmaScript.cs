@@ -7,7 +7,6 @@ public class ArmaScript : MonoBehaviour
     public GameObject bala;
     public GameObject canvas;
     public GameObject cano;
-    public Transform transform;
     public float velocidade;
     public float precisao = 100;
     public float Dano = 5;
@@ -53,13 +52,15 @@ public class ArmaScript : MonoBehaviour
 
     void distorce()
     {
-        foreach (Transform t in canvas.transform)
+        Debug.Log(canvas.ToString());
+        
+        /*foreach (Transform t in canvas.transform)
         {
             if(t.gameObject.name == "cima" || t.gameObject.name == "baixo")
                 t.gameObject.transform.localScale = new Vector3(1,(float) (100 - num) / 100, 1);
             else 
                 t.gameObject.transform.localScale = new Vector3(1,(float) (100 - num) / 100, 1);
-        }
+        }*/
         
     }
 }
